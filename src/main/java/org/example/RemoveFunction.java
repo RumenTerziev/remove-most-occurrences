@@ -23,12 +23,12 @@ public class RemoveFunction {
         Map<Integer, Integer> numberOccurrences = getNumberOccurrences(numbers);
         numberOccurrences.forEach((k, v) -> System.out.printf("Number %d has %d occurrences.\n", k, v));
 
-        int distinguishedNumbersCount = getDistinguishedNumbersCount(numberOccurrences, numbers, countRemovals);
+        int distinguishedNumbersCount = getDistinctNumbersCount(numberOccurrences, numbers, countRemovals);
         System.out.printf("%nNumbers after removals: %s%n", numbers);
-        System.out.printf("The distinguished numbers' count is: %d", distinguishedNumbersCount);
+        System.out.printf("The distinct numbers' count is: %d", distinguishedNumbersCount);
     }
 
-    private static int getDistinguishedNumbersCount(Map<Integer, Integer> numberOccurrences, List<Integer> numbers, int countRemovals) {
+    private static int getDistinctNumbersCount(Map<Integer, Integer> numberOccurrences, List<Integer> numbers, int countRemovals) {
         Iterator<Map.Entry<Integer, Integer>> iterator = numberOccurrences.entrySet().iterator();
         while (!numbers.isEmpty() && countRemovals > 0 && iterator.hasNext()) {
             Map.Entry<Integer, Integer> currentEntry = iterator.next();
