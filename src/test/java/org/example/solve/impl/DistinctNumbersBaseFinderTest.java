@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class DistinctNumbersBaseFinderTest {
 
@@ -29,7 +29,7 @@ class DistinctNumbersBaseFinderTest {
         int actual = distinctNumbersFinder.getDistinctNumbersCount(inputData);
 
         //Then
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -57,7 +57,7 @@ class DistinctNumbersBaseFinderTest {
         int actual = distinctNumbersFinder.getDistinctNumbersCount(inputData);
 
         //Then
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -82,7 +82,7 @@ class DistinctNumbersBaseFinderTest {
         int actual = distinctNumbersFinder.getDistinctNumbersCount(inputData);
 
         //Then
-        assertEquals(expected, actual);
-        assert(numbers).contains(3);
+        assertThat(actual).isEqualTo(expected);
+        assertThat(numbers).contains(3);
     }
 }

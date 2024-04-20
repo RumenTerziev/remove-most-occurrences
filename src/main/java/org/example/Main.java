@@ -1,8 +1,8 @@
 package org.example;
 
 import org.example.model.InputData;
-import org.example.solve.impl.DistinctNumbersBaseFinder;
 import org.example.solve.DistinctNumbersFinder;
+import org.example.solve.impl.DistinctNumbersBaseFinder;
 import org.example.util.InputDataResolver;
 
 import java.util.List;
