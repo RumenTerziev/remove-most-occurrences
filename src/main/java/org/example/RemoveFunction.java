@@ -23,9 +23,9 @@ public class RemoveFunction {
         Map<Integer, Integer> numberOccurrences = getNumberOccurrences(numbers);
         numberOccurrences.forEach((k, v) -> System.out.printf("Number %d has %d occurrences.\n", k, v));
 
-        int distinguishedNumbersCount = getDistinctNumbersCount(numberOccurrences, numbers, countRemovals);
+        int distinctNumbersCount = getDistinctNumbersCount(numberOccurrences, numbers, countRemovals);
         System.out.printf("%nNumbers after removals: %s%n", numbers);
-        System.out.printf("The distinct numbers' count is: %d", distinguishedNumbersCount);
+        System.out.printf("The distinct numbers' count is: %d", distinctNumbersCount);
     }
 
     private static int getDistinctNumbersCount(Map<Integer, Integer> numberOccurrences, List<Integer> numbers, int countRemovals) {
