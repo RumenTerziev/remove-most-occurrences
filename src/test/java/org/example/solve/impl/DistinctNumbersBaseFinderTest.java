@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -84,5 +85,20 @@ class DistinctNumbersBaseFinderTest {
         //Then
         assertThat(actual).isEqualTo(expected);
         assertThat(numbers).contains(3);
+    }
+
+    @Test
+    void testGetNumbersOccurrences_whenGivenInputData() {
+        //Given
+        List<Integer> numbers = List.of(1, 1, 2, 2, 3, 3, 3);
+
+        //When
+        Map<Integer, Integer> result = distinctNumbersFinder.getNumberOccurrences(numbers);
+
+        //Then
+        assertThat(result).hasSize(3);
+        assertThat(result).containsEntry(1, 2);
+        assertThat(result).containsEntry(2, 2);
+        assertThat(result).containsEntry(3, 3);
     }
 }
