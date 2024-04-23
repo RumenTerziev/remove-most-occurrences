@@ -3,8 +3,10 @@ package org.example.solve.impl;
 import org.example.model.InputData;
 import org.example.solve.DistinctNumbersFinder;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DistinctNumbersBaseFinder implements DistinctNumbersFinder {
 
@@ -28,21 +30,5 @@ public class DistinctNumbersBaseFinder implements DistinctNumbersFinder {
             }
         }
         return Set.copyOf(numbers).size();
-    }
-
-    @Override
-    public Map<Integer, Integer> getNumberOccurrences(List<Integer> array) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int currentNum : array) {
-            map.putIfAbsent(currentNum, 0);
-            map.put(currentNum, map.get(currentNum) + 1);
-        }
-        return map.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue((f, s) -> s - f))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
     }
 }
