@@ -1,20 +1,18 @@
 package org.example;
 
 import org.example.model.InputData;
-import org.example.solve.DistinctNumbersFinder;
+import org.example.solve.IDistinctNumbersFinder;
 import org.example.solve.impl.DistinctNumbersAdvancedFinder;
 import org.example.util.InputDataResolver;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.example.util.TestDataSupplier.getTestInputData;
-
 public class Main {
 
     private static final InputDataResolver inputDataResolver = new InputDataResolver();
 
-    private static final DistinctNumbersFinder DISTINCT_NUMBERS_FINDER = new DistinctNumbersAdvancedFinder();
+    private static final IDistinctNumbersFinder DISTINCT_NUMBERS_FINDER = new DistinctNumbersAdvancedFinder();
 
     public static void main(String[] args) {
 
@@ -22,8 +20,7 @@ public class Main {
         String secondTestPath = "src/main/resources/test-two.txt";
         String thirdTestPath = "src/main/resources/test-three.txt";
 
-//        InputData inputData = inputDataResolver.getInputData(thirdTestPath);
-        InputData inputData = getTestInputData();
+        InputData inputData = inputDataResolver.getInputData(thirdTestPath);
         List<Integer> numbers = inputData.numbers();
         System.out.println("The initial numbers are:\n" + numbers);
         int countRemovals = inputData.countRemovals();
@@ -34,9 +31,9 @@ public class Main {
         numberOccurrences.forEach((k, v) -> System.out.printf("Number %d has %d occurrences.\n", k, v));
 
         long millis = System.currentTimeMillis();
-        int distinctNumbersCount = DISTINCT_NUMBERS_FINDER.getDistinctNumbersCount(inputData);
+        int distinctNumbersCount = DISTINCT_NUMBERS_FINDER.getDistinctNumbersCount(inputData, numberOccurrences);
         System.out.println("Time for execution is " + (System.currentTimeMillis() - millis) + " milliseconds.");
-        System.out.printf("%nNumbers after removals: %s%n", numbers);
-        System.out.printf("The distinct numbers' count is: %d", distinctNumbersCount);
+        System.out.printf("%nNumbers after removals: %s%n", DISTINCT_NUMBERS_FINDER.getDistinctNumbers(numberOccurrences));
+        System.out.printf("The distinct numbers' count after removals is: %d", distinctNumbersCount);
     }
 }
